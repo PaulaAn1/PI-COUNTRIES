@@ -1,0 +1,60 @@
+.container1234 {
+    display: flex;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    height: 6vh;
+    width: 100%;
+    padding: 0px 5%;
+    padding-top: 2rem;
+    padding-left: 25rem;
+    padding-bottom: 2rem;
+    /* background: linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%); */
+    background-color: black;
+}
+
+.div2314 {
+    display: flex;
+    -moz-box-pack: justify;
+    justify-content: space-between;
+    -moz-box-align: center;
+    align-items: center;
+    width: 60%;
+    cursor: pointer;
+}
+
+.div2314 select {
+    display: flex;
+    -moz-box-align: center;
+    align-items: center;
+    padding: 6px 8px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 45px;
+    border-style: none;
+    -moz-box-flex: 1;
+    flex-grow: 1;
+    margin-right: 0.2rem;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    /* font-weight: bold; */
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    cursor: pointer;
+}
+
+.divde233 {
+    display: flex;
+    -moz-box-align: center;
+    /* align-items:flex-end; */
+    padding: 8px 8px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 45px;
+    -moz-box-flex: 1;
+    flex-grow: 1;
+    margin-right: 2rem;
+}
+
+.divde233 select:hover {
+    background-color: rgba(218, 130, 15, 0.9);
+    box-shadow: 0px 0px 1px 1px #ffffff;
+}

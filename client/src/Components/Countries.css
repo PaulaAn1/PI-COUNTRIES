@@ -1,0 +1,9 @@
+.container1 {
+    /* background: linear-gradient(rgb(0, 0, 0), pink) */
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(34, 34, 14, 0.8)), url(../assets/bgHome1.jpg);
+    background-size: cover;
+    background-position:center;
+    background-repeat: no-repeat;
+}

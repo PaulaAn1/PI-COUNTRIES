@@ -1,0 +1,10 @@
+export const ASCENDENTE = 'ascendente';
+export const DESCENCENTE = 'descendente';
+export const LOWEST = 'LOWEST';
+export const HIGHEST = 'HIGHEST';
+export const AMERICAS = 'AMERICAS';
+export const ASIA = 'ASIA';
+export const AFRICA = 'AFRICA';
+export const EUROPE = 'EUROPE';
+export const OCEANIA = 'OCEANIA';
+export const ANTARCTIC = 'ANTARCTIC';
