@@ -11,11 +11,10 @@ const Nav = () => {
         <Link to='/'>
         <img src={Logo} className="logo" alt="Main Logo" />
         </Link>
-
         <ul>
             <li><SearchBar /></li>
             <li><a href="/home">Home</a></li>
-            <li><a href="/addactivity">Add New Activity</a></li>
+            <li><Link to={'/addactivity'}><button>Add New Activity</button></Link></li>
         </ul>
 
     </div>

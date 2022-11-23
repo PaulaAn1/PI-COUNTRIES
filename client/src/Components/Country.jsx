@@ -11,7 +11,7 @@ const Country = ({posts}) => {
         }
 
         return (
-            <div className='main'>
+            <div className='main' key={posts.map(e => e.id)}>
                 {posts.map(post => (
                 <Link to={`/${post.id}`} id='link'>
                     <div key={post.id}>

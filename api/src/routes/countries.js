@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { Activity, Country, Countries_Activity } = require("../db");
+const { Activity, Country } = require("../db");
 const { countriesDb } = require('./apiCountries');
 
 
@@ -15,7 +15,7 @@ router.get("/", async (req, res, next) => {
     let bdCountry = await Country.findAll({
         include: {
         model: Activity,
-        attributes: ["name", "difficulty", "duration", "season", /* "season2" */],
+        attributes: ["name", "difficulty", "duration", "season"],
         through: { attributes: [] },
         },
     });
@@ -67,7 +67,7 @@ router.get('/:id', async (req, res, next) => {
                 },
                 include: {
                     model: Activity,
-                    attributes: ["name", "difficulty", "duration", "season", /* "season2" */ ],
+                    attributes: ["name", "difficulty", "duration", "season"],
                     through: { attributes: [] },
                 },
             })

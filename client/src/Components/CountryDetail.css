@@ -240,6 +240,8 @@
 }
 .main3455 button {
     background: #eb94d0;
+    border: none;
+    cursor: pointer;
     background-image: -webkit-linear-gradient(top, #e9dad0, #e9dad0);
     background-image: -moz-linear-gradient(top, #e9dad0, #e9dad0);
     background-image: -ms-linear-gradient(top, #e9dad0, #e9dad0);

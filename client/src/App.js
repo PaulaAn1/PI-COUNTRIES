@@ -8,17 +8,16 @@ import { Order } from './Components/Order';
 import { AddActivity } from './Components/AddActivity';
 
 
-
 function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path="/home" >
+        <Route exact path="/home" >
           <Nav />
           <Order />
           <Countries />
         </Route>
-        <Route path="/addactivity">
+        <Route exact path="/addactivity">
           <AddActivity />
         </Route>
         <Route path="/:id">

@@ -41,9 +41,6 @@ module.exports = (sequelize) => {
         season: {
             type: DataTypes.ENUM ('Summer', 'Fall', 'Winter', 'Spring'),
         },
-        season2: {
-            type: DataTypes.ENUM ('Alta', 'Media', 'Baja'),
-        },
         create: {
             type: DataTypes.BOOLEAN,
             allowNull: false,

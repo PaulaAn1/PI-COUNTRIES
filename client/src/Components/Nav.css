@@ -40,6 +40,16 @@
     color: white;
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-size: 1.2rem;
+    cursor: pointer;
+}
+.navbar ul li button {
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
 }
 
 .navbar ul li::before {

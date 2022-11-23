@@ -1,13 +1,13 @@
 import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Clean, getAllCountries } from '../Redux/actions';
+import { Clean, getActivities, getAllCountries } from '../Redux/actions';
 import Country from './Country';
 import Pagination from './Pagination';
 import './Countries.css';
 
 export const Countries = () => {
-    const countriesFil = useSelector(state => state.countryFiltered);
     const countries = useSelector(state => state.countries);
+    const countriesFil = useSelector(state => state.countryFiltered);
     let dispatch = useDispatch();
 
     const currentPages = useSelector((state) => state.currentPage);
@@ -17,13 +17,11 @@ export const Countries = () => {
     const totalCard = countriesFil.length;
     const currentCountries = countriesFil.slice(idFirstCard, idLastCard + 1);
 
-
+    console.log(currentCountries)
     useEffect(() => {
         if (countriesFil.length === countries.length) {
             dispatch(getAllCountries());
-            console.log(true);
-        } else {
-            console.log(false);
+            dispatch(getActivities());
         }
         
         return dispatch(Clean());

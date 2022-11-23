@@ -1,7 +1,7 @@
 import { useEffect, useState} from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addActivity, getAllCountries } from '../Redux/actions';
+import { addActivity } from '../Redux/actions';
 import { Link } from 'react-router-dom';
 import './AddActivity.css';
 
@@ -13,50 +13,51 @@ let validateForm = (input) => {
     if(!input.name) {
         errors.name = "This field is required!"
     } else if (!regexName.test(input.name)){
-        errors.name = "Name can be a number!"
+        errors.name = "Name cannot contain special characters!"
     } else if (/[$%&|<>#]/.test(input.name)) {
         errors.name = "Name cannot contain special characters!"
+    } else if (typeof(input.name) === 'number') {
+        errors.name = "Name cannot contain a number!"
     }
     if(!input.difficulty) {
         errors.difficulty = "This field is required!"
     } else if(input.difficulty > 5 || input.difficulty < 1 ) {
         errors.difficulty = "difficulty must be a number between 1-5!"
+    } else if(typeof(input.difficulty) === 'number') {
+        errors.difficulty = "difficulty must be a number!"
     }
     if(!input.duration) {
         errors.duration = "This field is required!"
     } else if(input.duration > 24 || input.duration < 1 ) {
         errors.duration = "difficulty must be a number between 1-24!"
-    }   
+    } else if(regexName.test(input.duration)) {
+        errors.duration = "duration must be a number!"
+    }  
     if(!input.season) {
         errors.season = "This field is required!"
-    }    
-    /* if(!input.season2) {
-        errors.season2 = "This field is required!"
-    }  */   
-
+    }
+    
+    if(input.countries.length === 0) {
+        errors.countries = "This field is required!"
+    }
     return errors;
 }
 
 export const AddActivity = () => {
-    const countries = useSelector((state) => state.countries);
+    const Allcountries = useSelector((state) => state.countries);
     let dispatch = useDispatch();
-
     const [input, setInput] = useState({
         name: '',
         difficulty: '',
         duration: '',
         season: '',
-        /* season2: '', */
         countries: []
     });
     const [errors, setErrors] = useState({});
     
     
     let history = useHistory()
-    useEffect(() => {
-        dispatch(getAllCountries())
-    }, [dispatch]);
-
+    
     
     function onInputChange (e) {
         setInput({
@@ -80,30 +81,29 @@ export const AddActivity = () => {
             });
         }
     }
-
+    
     function handleSubmit(e) {
         e.preventDefault();
         setErrors(validateForm({
-            input,
+            ...input,
             [e.target.name]: e.target.value
         }))
-    
+        console.log(Object.values(errors));
         if (Object.values(errors).length === 0) {
             dispatch(addActivity(input));
-            alert("Actividad Creada");
+            alert("Activity Created!");
             setInput({
-            name: "",
-            difficulty: [],
-            duration: "",
-            season: [],
-            /* season2: [], */
+                name: "",
+                difficulty: [],
+                duration: "",
+                season: [],
             });
             history.push("/home");
         } else {
             alert("complete los datos por favor");
         }
     }
-
+    
     function handleDelete(e) {
         setInput({
             ...input,
@@ -111,12 +111,9 @@ export const AddActivity = () => {
         })
     }
 
-    /* function onInputChanges(e) {
-        setInput({
-            ...input,
-            [e.target.name]: e.target.value
-        })
-    } */
+    useEffect(() => {
+        setErrors(validateForm(input));
+    }, [input]);
 
     return (
         <div id='contacdcdc'>
@@ -124,17 +121,17 @@ export const AddActivity = () => {
                 <h2>Add New Activity</h2>
                 <div className="name">
                     <label htmlFor="name"></label>
-                    <input type="text" placeholder="Activity Name" name="name" onChange={(e) => onInputChange(e)} value={input.name} id="name_input" required />
-                    {errors.name && <p className='cdsdvsdvs'>{errors.name}</p>}
+                    <input type="text" placeholder="Activity Name" name="name" onChange={(e) => onInputChange(e)} value={input.name} id="name_input" />
+                    {errors.name ? <label className='cdsdvsdvs'>{errors.name}</label> : null}
                 </div>
                 <div className="difficulty">
                     <label htmlFor="difficulty"></label>
-                    <input type="number" placeholder="Activity Difficulty" name="difficulty" onChange={(e) => onInputChange(e)} value={input.difficulty} id="difficulty_input" required />
+                    <input type="number" placeholder="Activity Difficulty" name="difficulty" onChange={(e) => onInputChange(e)} value={input.difficulty} id="difficulty_input" />
                     {errors.difficulty && <p className='cdsdvsdvs'>{errors.difficulty}</p>}
                 </div>
                 <div className="duration">
                     <label htmlFor="duration"></label>
-                    <input type="text" placeholder="Activity Duration" name="duration" onChange={(e) => onInputChange(e)} value={input.duration} id="duration_input" required />
+                    <input type="text" placeholder="Activity Duration" name="duration" onChange={(e) => onInputChange(e)} value={input.duration} id="duration_input" />
                     {errors.duration && <p className='cdsdvsdvs'>{errors.duration}</p>}
                 </div>
                 <div className="season">
@@ -178,47 +175,19 @@ export const AddActivity = () => {
                     </label>
                         {errors.season && <p className='cdsdvsdvs'>{errors.season}</p>}
                 </div>
-                {/* <div>
-                    <label htmlFor="season2">Season2</label>
-                    <label>
-                        Alta
-                        <input
-                            type="radio"
-                            value="Alta"
-                            name="season2"
-                            onChange={(e) => onInputChanges(e)}
-                        />
-                    </label>
-                    <label>
-                        Media
-                        <input
-                            type="radio"
-                            value="Media"
-                            name="season2"
-                            onChange={(e) => onInputChanges(e)}
-                        />
-                    </label>
-                    <label>
-                        Baja
-                        <input
-                            type="radio"
-                            value="Baja"
-                            name="season2"
-                            onChange={(e) => onInputChanges(e)}
-                        />
-                    </label>
-                        {errors.season2 && <p className='cdsdvsdvs'>{errors.season2}</p>}
-                    </div> */}
                 <div className="subject">
                 <label htmlFor="subject"></label>
-                <select placeholder="Subject line" name="subject" onChange={handleSelect} id="subject_input" required>
-                    {
-                        countries.map(ele => (
-                            <option value={ele.name} id={ele.id}>{ele.name}</option>
-                        ))
-                        
-                    }
-                </select>
+                </div>
+                <div>
+                    <select placeholder="Subject line" name="subject" onChange={(e) => handleSelect(e)} id="subject_input" >
+                        {
+                            Allcountries?.map(ele => (
+                                <option value={ele.name} key={ele.name}>{ele.name}</option>
+                            ))
+                            
+                        }
+                    </select>
+                    {errors.countries && <p className='cdsdvsdvs'>{errors.countries}</p>}
                 </div>
                 <div className="paisAgregado">
                     {input.countries.map((el) => (
@@ -232,15 +201,12 @@ export const AddActivity = () => {
                     <button className='submit' type="submit" value="Add Activity" id="form_button" >Add Activity</button>
                 </div>
             </form>
-
                 <div className='main3455'>
                     <Link to={'/home'}>
                         <button>Back</button>
                     </Link> 
                 </div>
-            
         </div> 
     )
 }
 
-/* export default Countries; */

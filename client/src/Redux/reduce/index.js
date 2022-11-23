@@ -38,11 +38,6 @@ export default function rootReducer(state = initialState, action) {
             ...state,
             activities: [...state.activities, action.payload]
         }
-        case DELETE_ACTIVITY:
-        return {
-            ...state,
-            activities: state.activities.filter(e => e.id !== action.payload)
-        }
         case CLEAN:
         return {
             ...state,

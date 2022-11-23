@@ -15,18 +15,16 @@ export const GET_COUNTRY_DETAIL = "GET_COUNTRY_DETAIL";
 
 export const getAllCountries = () => {
     return function (dispatch) {
-    return (
         axios.get('http://localhost:3001/api/countries')
         .then(country => {
             dispatch({
-                type: GET_ALL_COUNTRIES,
-                payload: country.data
-            })
+            type: GET_ALL_COUNTRIES,
+            payload: country.data
         })
-        .catch(err => {
-        console.error(err);
         })
-    )
+        .catch(error => {
+            console.error(error);
+        })
     }
 }
 export const getCountryDetail = (id) => {
@@ -57,7 +55,7 @@ export const getCountryDetail = (id) => {
             })
         })
         .catch(err => {
-        console.error(err);
+            alert('No existe este país');
         })
     )
     }
@@ -72,17 +70,6 @@ export const getCountryDetail = (id) => {
         
     }
     }
-
-    export const deleteActivity = (id) => {
-
-    return async function (dispatch) {
-        const res = await axios.delete(`http://localhost:3001/api/activities/${id}`)
-        dispatch({
-            type: DELETE_ACTIVITY,
-            payload: res
-        })
-    }
-    };
 
     export const sortCountryByAscDes = (order) => {
     return {
@@ -110,9 +97,9 @@ export const getCountryDetail = (id) => {
         payload: order
     }
 }
-    export const addActivity = (data) => {
+    export const addActivity = (payload) => {
     return async function (dispatch) {
-        return axios.post('http://localhost:3001/api/activities', data)
+        return axios.post('http://localhost:3001/api/activities', payload)
         .then(country => {
             dispatch({
             type: ADD_ACTIVITY,

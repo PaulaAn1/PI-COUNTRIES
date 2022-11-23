@@ -43,8 +43,6 @@ export const CountryDetail = () => {
                                 Duration: {e.duration},
                                 <br />
                                 Season: {e.season}
-                                <br />
-                                Season2: {e.season2}
                             </div>
                     )) }</h5>
                 </div>

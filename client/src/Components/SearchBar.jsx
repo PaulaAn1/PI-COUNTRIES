@@ -7,10 +7,13 @@ import './SearchBar.css';
 export default function SearchBar() {
     const [country, setCountry] = useState('');
     let dispatch = useDispatch();
-    
     function onSubmit(e) {
         e.preventDefault();
-        dispatch(getCountry(country))
+        if(!country) {
+            alert('Debes ingresar un país');
+        } else {
+            dispatch(getCountry(country))
+        }
     }
 
     function onChanging(e) {
