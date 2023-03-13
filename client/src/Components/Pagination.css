@@ -33,6 +33,7 @@
     font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 .pagination button:hover, .pagination .active button {
+    transition: 500ms;
     background-color: #fdb61cc7;
     color: aliceblue;
 }
@@ -57,4 +58,9 @@
 }
 .pagination-right {
     text-align: right;
+}
+
+.pagination :focus {
+    background-color: #fdb61cc7;
+    color: #242121;
 }

@@ -36,11 +36,11 @@ export const CountryDetail = () => {
                     <h4>Tourist Activities:</h4>
                     <h5>{country.activities?.map(e => (
                             <div key={e.name} className="div123">
-                                Name: {e.name},
+                                Name: {e.name}
                                 <br />
-                                Difficulty: {e.difficulty},
+                                Difficulty: {e.difficulty}
                                 <br />
-                                Duration: {e.duration},
+                                Duration: {e.duration} h.
                                 <br />
                                 Season: {e.season}
                             </div>

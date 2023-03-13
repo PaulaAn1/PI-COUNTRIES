@@ -64,5 +64,6 @@
 }
 
 .navbar ul li:hover::before {
+    transition: 500ms;
     width: 100%;
 }

@@ -73,7 +73,7 @@ export const AddActivity = () => {
     function handleSelect(el) {
         el.preventDefault();
         if (input.countries.includes(el.target.value)) {
-            return alert("este país ya esta cargado");
+            return alert("This country is already loaded!");
         } else {
             setInput({
             ...input,
@@ -100,7 +100,7 @@ export const AddActivity = () => {
             });
             history.push("/home");
         } else {
-            alert("complete los datos por favor");
+            alert("Fill in all the information please!");
         }
     }
     

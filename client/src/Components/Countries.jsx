@@ -32,12 +32,14 @@ export const Countries = () => {
             <Country 
                 posts={currentCountries} 
             />
+            <br />
             <Pagination
                 currentPages={currentPages}
                 pages={pages}
                 totalCard={totalCard}
             />
-            <br />  
+            <br /> 
+            <br /> 
         </div> 
     )
 }

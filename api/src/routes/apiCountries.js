@@ -8,6 +8,7 @@ const apiCountries = async () => {
     // me triago la info de la api y la guardo en un objeto para usar en las solicitudes http
     let countries = await axios.get(`https://restcountries.com/v3/all`);
     const allCountries = countries.data
+    console.log(allCountries);
 
     // Por cada country me trigo la data solicitada con un map, que recorre la data entregada por la api en un array  
     countries = allCountries?.map(country => {

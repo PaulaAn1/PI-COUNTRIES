@@ -44,6 +44,29 @@ router.post('/', async (req, res, next) => {
     }
     });
 
-
+/* router.delete("/:id",async(req,res)=>{
+    try {
+        const {id}=req.params
+        console.log(id)
+        await Activity.destroy({
+        where:{id:id}
+        })
+        res.status(200).send("delete ok")
+    } catch (error) {
+        console.log("no se borro nada", error)
+    }
+})
+    
+router.put("/:id",async(req, res)=>{
+    const {id}  = req.params
+    const {name,difficulty,duration,season} = req.body
+    try {
+        await Activity.update({name,difficulty,duration,season}
+        ,{where:{id:id}})
+        res.status(201).send("actividad actualizada")
+    } catch (error) {
+    console.error("no se actualizo nada",error)
+    }
+}) */
 
 module.exports = router;

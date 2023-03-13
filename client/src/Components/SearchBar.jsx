@@ -10,7 +10,7 @@ export default function SearchBar() {
     function onSubmit(e) {
         e.preventDefault();
         if(!country) {
-            alert('Debes ingresar un país');
+            alert('You must enter a Country!');
         } else {
             dispatch(getCountry(country))
         }

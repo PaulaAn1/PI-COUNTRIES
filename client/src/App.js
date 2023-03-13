@@ -6,6 +6,7 @@ import Homepage from './Components/Homepage';
 import { CountryDetail } from './Components/CountryDetail';
 import { Order } from './Components/Order';
 import { AddActivity } from './Components/AddActivity';
+import Footer from './Components/Footer';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Homepage />
         </Route>
       </Switch> 
+      <Footer />
     </div>
   );
 }

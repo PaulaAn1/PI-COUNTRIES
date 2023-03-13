@@ -55,7 +55,7 @@ export const getCountryDetail = (id) => {
             })
         })
         .catch(err => {
-            alert('No existe este país');
+            alert('This country does not exist!');
         })
     )
     }
@@ -70,6 +70,16 @@ export const getCountryDetail = (id) => {
         
     }
     }
+    /* export const deletetActivities = (id) => {
+    return async function (dispatch) {
+        const res = await axios.delete(`http://localhost:3001/api/activities/${id}`)
+        dispatch({
+            type: DELETE_ACTIVITIES,
+            payload: res
+        })
+        
+    }
+    } */
 
     export const sortCountryByAscDes = (order) => {
     return {

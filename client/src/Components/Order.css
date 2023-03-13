@@ -55,6 +55,7 @@
 }
 
 .divde233 select:hover {
+    transition: 500ms;
     background-color: rgba(218, 130, 15, 0.9);
     box-shadow: 0px 0px 1px 1px #ffffff;
 }
